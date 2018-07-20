@@ -1,0 +1,11 @@
+Package: rpenepma
+Title: Easy processing of data from PENEPMA simulations using R
+Version: 0.0.0.9000
+Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
+Maintainer: John Minter <jrminter@gmail.com>
+Description: Process PENEPMA spectra using R
+License: MIT + file LICENSE
+LazyData: true
+URL: https://github.com/jrminter/rpenepma
+BugReports: https://github.com/jrminter/rpenepma/issues
+Encoding: UTF-8
