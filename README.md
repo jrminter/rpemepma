@@ -7,8 +7,8 @@ A package to process output from PENEPMA using R
 [here](http://cran.revolutionanalytics.com/). **Note**: if you are
 running Windows, install the **Rtools** that let you build packages.
 You will want the Rtools binaries in your path. On systems where I have
-admin rights, I create `C:\\Apps`, make it writable for all users, and
-install **R** and **Rtools** in a `C:\\Apps\\R` folder. You want the
+admin rights, I create `C:\Apps`, make it writable for all users, and
+install **R** and **Rtools** in a `C:\Apps\R` folder. You want the
 Rtools binaries in your path and this keeps the path shorter. If you
 do not have admin rights, make an ``Apps`` folder in your home folder
 and install there...
