@@ -32,7 +32,7 @@ install.packages("ramify", dependencies=TRUE)
 install.packages("scales", dependencies=TRUE)
 ```
 
-Then you can use the `devtools` package to install `rpenenepma`. 
+Then you can use the `devtools` package to install `rpenepma`. 
 
 ```
 devtools::install_github("jrminter/rpenepma")
