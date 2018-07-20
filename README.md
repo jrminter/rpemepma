@@ -19,7 +19,8 @@ RStudio (below).
 
 3. Install R-Studio from 
 [here](https://www.rstudio.com/products/rstudio/download/preview/).
-The preview releases are the most up-to-date versions.
+The preview releases are the most up-to-date versions. It is a great
+development environment and will make your life a lot easier...
 
 
 4. Install the `devtools` package and the dependencies
