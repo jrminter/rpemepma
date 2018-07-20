@@ -1,7 +1,7 @@
 # rpenepma
 A package to process output from PENEPMA using R
 
-## How to use
+## How to install and use
 
 1. Install R for your operating system from
 [here](http://cran.revolutionanalytics.com/). **Note**: if you are
