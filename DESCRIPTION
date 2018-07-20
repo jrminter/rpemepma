@@ -9,3 +9,14 @@ LazyData: true
 URL: https://github.com/jrminter/rpenepma
 BugReports: https://github.com/jrminter/rpenepma/issues
 Encoding: UTF-8
+Depends:
+    R (>= 3.3.0),
+    ggplot2,
+    pander,
+    scales,
+    ramify
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1

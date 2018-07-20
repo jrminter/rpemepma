@@ -4,8 +4,7 @@
 #'
 #' @return a data frame
 #' 
-#' @importFrom ramify clip
-#' @importFrom utils read.table
+#' @import ramify
 #'
 #' @export
 #'

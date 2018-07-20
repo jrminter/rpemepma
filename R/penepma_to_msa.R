@@ -29,9 +29,6 @@
 #' # inF <- system.file("extdata", "pe-spect-01.dat", package = "rEDS")
 #' # ouF <- './penepma/k411-15kV.msa'
 #' # penepma_to_msa(inF, ouF, 15, 'simulation')
-#' 
-#' @importFrom utils head
-#' @importFrom utils tail
 #'
 #' @export
 penepma_to_msa <- function(datFile,
