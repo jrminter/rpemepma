@@ -13,11 +13,17 @@ Rtools binaries in your path and this keeps the path shorter. If you
 do not have admin rights, make an ``Apps`` folder in your home folder
 and install there...
 
-2. Install R-Studio from 
+2. Install the `git` version control software for your operating
+system from [here](https://git-scm.com/). It works well with
+RStudio (below).
+
+3. Install R-Studio from 
 [here](https://www.rstudio.com/products/rstudio/download/preview/).
 The preview releases are the most up-to-date versions.
 
-3. Install the `devtools` package and the dependencies
+
+4. Install the `devtools` package and the dependencies
+from the R terminal in RStudio. 
 
 ```
 install.packages("devtools", dependencies=TRUE)
@@ -37,6 +43,14 @@ You can view them by:
 
 ```
 browseVignettes(package="rpenepma")
+```
+
+You can get help by typing
+
+```
+?penepma_plot_spectrum
+?penepma_plot_spectrun_logy
+?penepma_to_msa
 ```
 
 
