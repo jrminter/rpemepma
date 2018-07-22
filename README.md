@@ -52,6 +52,7 @@ You can get help by typing
 ?penepma_plot_spectrum
 ?penepma_plot_spectrun_logy
 ?penepma_to_msa
+?calculate_penepma_z_shifts
 ```
 
 
