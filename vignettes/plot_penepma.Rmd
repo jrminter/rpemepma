@@ -76,5 +76,4 @@ plt <- ggplot(df, aes(x = keV, y = mu)) +
              plot.title = element_text(hjust = 0.5))
        
 print(plt)
-
 ```

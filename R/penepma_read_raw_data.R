@@ -5,6 +5,8 @@
 #' @return a data frame
 #' 
 #' @import ramify
+#' 
+#' @importFrom utils read.table
 #'
 #' @export
 #'

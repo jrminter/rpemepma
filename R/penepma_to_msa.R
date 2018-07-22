@@ -21,6 +21,8 @@
 #' @return None
 #'
 #' It silently writes the .msa file
+#' 
+#' @importFrom utils head tail
 #'
 #' @keywords keywords
 #'
