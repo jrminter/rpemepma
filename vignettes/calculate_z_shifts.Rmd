@@ -67,8 +67,13 @@ END      0000000000000000000000000000000000000000000000000000000
 ```
 
 The `Z-SHIFT` values are cumulative and expressed in units of `cm`.
-The function `calculate_penepma_z_shifts()` takes a list of layer
-thicknesses in units of `nm` and outputs a list of **cumulative sums**
+They also have a **negative sign**. Therefore the function was deigned
+to take a list of **positive** individula layer thickness and return
+a list of **negative cumulative sums**.
+
+
+In summary, the function `calculate_penepma_z_shifts()` takes a list of layer
+thicknesses in units of `nm` and outputs a list of **negative cumulative sums**
 in units of `cm` in the 15 digit exponential format. See the example
 below:
 
