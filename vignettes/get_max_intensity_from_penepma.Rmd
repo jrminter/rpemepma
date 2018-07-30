@@ -1,0 +1,99 @@
+---
+title: "Get the maximum intensity for selected elements from penepma"
+author: "John Minter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get the maximum intensity for selected elements from penepma}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = NA
+)
+```
+
+Our objective is to compute the maximum intensity from selected elements
+from a penepma simulation of C-coated EagleXG glass. We have two
+functions: one reports the **maximum primary intensity** and the 
+second reports the **maximum total intensity**.
+
+## Load the intensity file
+
+First we get our exemplar file.
+
+```{r getPath}
+spcPath <- system.file("extdata", "pe-intens-01.dat", package = "rpenepma")
+spcPath
+```
+
+Then we create a tibble using the `penepma_get_intensities` function
+
+```{r loadTibble, message=FALSE}
+library(rpenepma)
+tib <- penepma_get_intensities(spcPath)
+print(summary(tib))
+```
+
+Now compute the maximum primary intensity for C
+
+
+```{r calcCarbonPrimary, message=TRUE}
+C.p <- penepma_get_max_primary_intensity_z(tib, 6)
+print(C.p)
+```
+and the maximum total intensity
+
+```{r calcCarbonTotal, message=TRUE}
+C.t <- penepma_get_max_total_intensity_z(tib, 6)
+print(C.t)
+```
+
+
+
+Next, compute the maximum primary intensity for Si
+
+```{r calcSiliconPrimary, message=TRUE}
+Si.p <- penepma_get_max_primary_intensity_z(tib, 14)
+print(Si.p)
+```
+
+Then compute the maximum total intensity for Si
+
+```{r calcSiliconTotal, message=TRUE}
+Si.t <- penepma_get_max_total_intensity_z(tib, 14)
+print(Si.t)
+```
+
+Next, compute the maximum primary intensity for O
+
+```{r calcOxygenPrimary, message=TRUE}
+O.p <- penepma_get_max_primary_intensity_z(tib, 8)
+print(O.p)
+```
+
+Then, compute the maximum total intensity for O
+
+```{r calcOxygenTotall, message=TRUE}
+O.t <- penepma_get_max_total_intensity_z(tib, 8)
+print(O.t)
+```
+
+
+Finally, compute the maximum primary intensity for Ca
+
+```{r calcCalciumPrimary, message=TRUE}
+Ca.p <- penepma_get_max_primary_intensity_z(tib, 20)
+print(Ca.p)
+```
+
+and the maximum total intensity for Ca
+
+```{r calcCalciumTotal, message=TRUE}
+Ca.t <- penepma_get_max_total_intensity_z(tib, 20)
+print(Ca.t)
+```
+

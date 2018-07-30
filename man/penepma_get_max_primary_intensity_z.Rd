@@ -2,7 +2,7 @@
 % Please edit documentation in R/penepma_get_max_primary_intensity_z.R
 \name{penepma_get_max_primary_intensity_z}
 \alias{penepma_get_max_primary_intensity_z}
-\title{Retrieve the maximum intensity for an element}
+\title{Retrieve the maximum primary intensity and uncertainty for an element}
 \usage{
 penepma_get_max_primary_intensity_z(tib, z)
 }
@@ -12,8 +12,8 @@ penepma_get_max_primary_intensity_z(tib, z)
 \item{z}{The atomic number for an element}
 }
 \value{
-the intensities transition with the maximum primary intensity (a tibble)
+the transition and both the maximum primary intensity and uncertainty (a tibble)
 }
 \description{
-Retrieve the maximum intensity for an element
+Retrieve the maximum primary intensity and uncertainty for an element
 }

@@ -1,10 +1,10 @@
-#' Retrieve the maximum intensity for an element
+#' Retrieve the maximum primary intensity and uncertainty for an element
 #'
 #' @param tib A tibble. The tibble with the intensities from a penepma spectrum
 #' 
 #' @param z The atomic number for an element
 #'
-#' @return the intensities transition with the maximum primary intensity (a tibble)
+#' @return the transition and both the maximum primary intensity and uncertainty (a tibble)
 #' 
 #' @import dplyr
 #' 
