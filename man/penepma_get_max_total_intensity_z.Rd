@@ -2,7 +2,8 @@
 % Please edit documentation in R/penepma_get_max_total_intensity_z.R
 \name{penepma_get_max_total_intensity_z}
 \alias{penepma_get_max_total_intensity_z}
-\title{Retrieve the maximum total intensity qnd uncertqainty for an element}
+\title{Retrieve the maximum total intensity qnd uncertqainty for an element
+and calculate the SNR.}
 \usage{
 penepma_get_max_total_intensity_z(tib, z)
 }
@@ -12,8 +13,9 @@ penepma_get_max_total_intensity_z(tib, z)
 \item{z}{The atomic number for an element}
 }
 \value{
-the transition and the maximum total intensity and uncertainty (a tibble)
+A tibble. The transition, maximum total intensity, uncertainty, and SNR.
 }
 \description{
 Retrieve the maximum total intensity qnd uncertqainty for an element
+and calculate the SNR.
 }
