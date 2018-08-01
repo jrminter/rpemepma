@@ -17,6 +17,12 @@ penepma_get_max_total_intensity_z <- function(tib, z){
     filter(Int.mu == max(Int.mu)) %>%
     select(IZ, S0, S1, Int.mu, Int.se) %>%
     mutate(Int.snr=Int.mu/Int.se)
+  nr <- nrow(rv)
+  sym <- get_atomic_symbol_from_z(z)
+  sym <- rep(sym, nr)
+  rv <- tibble::add_column(rv, Symbol=sym) %>%
+    # reorder columns
+    select(Symbol, IZ, S0, S1, Int.mu, Int.se, Int.snr)
   
   return(rv)
 }

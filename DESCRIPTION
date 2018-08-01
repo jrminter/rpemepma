@@ -1,6 +1,6 @@
 Package: rpenepma
 Title: Easy processing of data from PENEPMA simulations using R
-Version: 0.0.0.9008
+Version: 0.0.0.9009
 Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
 Maintainer: John Minter <jrminter@gmail.com>
 Description: Process PENEPMA spectra using R
