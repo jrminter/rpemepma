@@ -86,9 +86,24 @@ primInt <- dplyr::bind_rows(C.t, Si.t, O.t, Ca.t)
 print(primInt)
 ```
 
+Prepend a sample ID
+
+```{r addSIDpi, message=TRUE}
+primInt <- prepend_sample_id_max_int_tib(primInt, "Eagle-XG")
+print(primInt)
+
+```
 Followed by the total intensity
 
 ```{r totalInt, message=TRUE}
 totInt <- dplyr::bind_rows(C.t, Si.t, O.t, Ca.t)
 print(totInt)
+```
+
+Prepend a sample ID
+
+```{r addSIDti, message=TRUE}
+totInt <- prepend_sample_id_max_int_tib(totInt, "Eagle-XG")
+print(totInt)
+
 ```
