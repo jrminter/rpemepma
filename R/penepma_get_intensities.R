@@ -13,7 +13,7 @@ penepma_get_intensities <- function(fi){
   y <- strsplit(x, " ") #[[1]][7])
   y <- unlist(lapply(y, function(x) x[nchar(x) > 0]))[-1]
   y <- y[-4]
-  df <- read.table(fi, sep = "" , header = F , skip=14)
+  df <- read.table(fi, sep = "" , header = F , skip=13)
   names(df) <- y
   names(df)[4] <- 'eV'
   df$eV <- df$eV/1000.
