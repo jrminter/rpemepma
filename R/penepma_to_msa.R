@@ -75,8 +75,8 @@ penepma_to_msa <- function(datFile,
 
   li <- sprintf('#XPERCHAN    : %.7f\n', ev_per_ch/1000.)
   cat(li)
-
-  cat("#OFFSET      : 0.0\n")
+  of <- sprintf("#OFFSET      : %.7f\n", df$keV[1])
+  cat(of)
   ev <- sprintf('#BEAMKV      : %g\n', e0)
   cat(ev)
   cat('#XLABEL      : Energy [keV]\n')

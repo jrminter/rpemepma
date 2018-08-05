@@ -4,13 +4,18 @@
 \alias{penepma_read_raw_data}
 \title{Retrieve the raw channel data from a PENEPMA spectrum}
 \usage{
-penepma_read_raw_data(fi)
+penepma_read_raw_data(fi, min_intensity_clip = 1e-12,
+  int_scale_factor = 1e+09)
 }
 \arguments{
 \item{fi}{String. The path to the file. ex: "./pe-spect-01.dat"}
+
+\item{min_intensity_clip}{numeric. The minimum value to clip the intensity. Default: 1.0e-12.}
+
+\item{int_scale_factor}{numeric. Intensity scale factor. Default: 1.0e9.}
 }
 \value{
-a data frame
+a tibble
 }
 \description{
 Retrieve the raw channel data from a PENEPMA spectrum
