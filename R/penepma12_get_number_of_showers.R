@@ -11,9 +11,11 @@
 #' @export
 #' 
 penepma12_get_number_of_showers <- function(fi){
+    options(scipen = -6) # force printing in exponential format
     res <- grep("Simulated primary showers", readLines(fi), value = TRUE)
     l   <- length(res)
     ret <- res[l]
     y <- as.numeric(strsplit(ret, " ")[[1]][9])
+    options(scipen = 3) # reset to default
     return(y)
   }
