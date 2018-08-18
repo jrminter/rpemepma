@@ -14,7 +14,6 @@
 #' @export
 #' 
 penepma_get_prz_data <- function(fi){
-    library(rpenepma)
     df <- read.table(fi, sep=" ", skip=17)
     # thanks, stackoverflow
     # https://stackoverflow.com/questions/2643939/remove-columns-from-dataframe-where-all-values-are-na
