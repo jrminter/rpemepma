@@ -2,13 +2,7 @@
 #'
 #' @param fi String. The path to the file. ex: "./pe-spect-01.dat"
 #' 
-#' @param min_intensity_clip numeric. The minimum value to clip the intensity. Default: 1.0e-12.
-#' 
-#' @param int_scale_factor numeric. Intensity scale factor. Default: 1.0e9.
-#' 
 #' @return a tibble
-#' 
-#' @import ramify
 #' 
 #' @import dplyr
 #' 
@@ -16,21 +10,15 @@
 #'
 #' @export
 #'
-penepma_read_raw_data <- function(fi,
-                                  min_intensity_clip=1.0e-12,
-                                  int_scale_factor=1.0e9){
+penepma_read_raw_data <- function(fi){
   df <- read.table(fi, sep=" ", skip=12)
-  df <- df[, -c(1,2,3) ]
-  df <- df[, -c(2, 4)]
-  names(df) <- c('ev', 'mu', 'se')
-  df$ev <- df$ev/1000.
-  names(df) <- c('keV', 'mu', 'se') # make keV
-
-  mv <- max(df$mu)
-  df$mu <- clip(df$mu, .min = min_intensity_clip, .max = mv)
-  df$mu <- 1e9*df$mu
-  mv <- max(df$se)
-  df$se <- clip(df$se, .min = min_intensity_clip, .max = mv)
-  df$se <- 1e9*df$se
-  return(as_tibble(df))
+  # thanks, stackoverflow
+  # https://stackoverflow.com/questions/2643939/remove-columns-from-dataframe-where-all-values-are-na
+  df <- df[,colSums(is.na(df))<nrow(df)]
+  names(df) <- c("eV", "pd.mu", "pd.unc")
+  df <- as_tibble(df) %>%
+        filter(pd.mu > 1.000000e-35) %>%
+        mutate(keV = eV*1.0e-3) %>%
+        select(keV, pd.mu, pd.unc)
+  return(df)
 }

@@ -29,7 +29,8 @@ It silently writes the .msa file
 }
 \description{
 Convert a spectrum simulated by PENEPMA into MSA format to
-be read into DTSA-II (where we have markers...)
+be read into DTSA-II (where we have markers...) The data is
+scaled for DTSA-II.
 }
 \examples{
 # Not run

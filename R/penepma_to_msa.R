@@ -1,7 +1,8 @@
 #' Convert a PENEPMA spectrum file to MSA format
 #'
 #' Convert a spectrum simulated by PENEPMA into MSA format to
-#' be read into DTSA-II (where we have markers...)
+#' be read into DTSA-II (where we have markers...) The data is
+#' scaled for DTSA-II.
 #'
 #'
 #' @param datFile string - the path to the 'pe-spect-##.dat'
@@ -34,22 +35,22 @@
 #'
 #' @export
 penepma_to_msa <- function(datFile,
-                           msaFile,
-                           e0,
-                           title,
-                           owner="Penepma",
-                           bDebug=FALSE){
-
+                              msaFile,
+                              e0,
+                              title,
+                              owner="Penepma",
+                              bDebug=FALSE){
+  
   ev_per_ch <- penepma_get_ev_per_ch(datFile)
   df <- penepma_read_raw_data(datFile)
-
+  
   if(bDebug == TRUE){
     print(head(df))
     print(tail(df))
     print("ev/ch")
     print(ev_per_ch)
   }
-
+  
   sink(msaFile)
   cat('#FORMAT      : EMSA/MAS Spectral Data File\n')
   cat('#VERSION     : 1.0\n')
@@ -72,7 +73,7 @@ penepma_to_msa <- function(datFile,
   cat('#XUNITS      : keV\n')
   cat('#YUNITS      : counts\n')
   cat('#DATATYPE    : Y\n')
-
+  
   li <- sprintf('#XPERCHAN    : %.7f\n', ev_per_ch/1000.)
   cat(li)
   of <- sprintf("#OFFSET      : %.7f\n", df$keV[1])
@@ -82,14 +83,19 @@ penepma_to_msa <- function(datFile,
   cat('#XLABEL      : Energy [keV]\n')
   cat('#YLABEL      : Counts\n')
   cat('#SPECTRUM    : \n')
-
+  
+  # scale for DTSA
+  low <- min(df$pd.mu)
+  factor <- 1.0/low
+  
   lData <- nrow(df)
   i <- 1
   while(i < lData){
     keV <- round(df$keV[i], 5)
-    cts <- round(100.0*df$mu[i], 2)
+    y <- factor*df$pd.mu[i]
+    cts <- round(y, 5)
     # li <- sprintf('%.1f, %.1f \n', eV, cts)
-    li <- sprintf('%.2f \n', cts)
+    li <- sprintf('%.5f \n', cts)
     cat(li)
     i = i + 1
   }
