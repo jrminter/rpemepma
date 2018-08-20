@@ -1,0 +1,62 @@
+---
+title: "Make a PENEPMA .geo file"
+author: "John Minter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Make a PENEPMA .geo file}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = NA
+)
+```
+
+Our objective construct a PENEPMA `.geo` file.
+
+**Note**: Rmarkdown interferes with the use of the `sink()` function which
+permits us to divert output to a system file. The code below, when run from
+a R script, writes the file `L3-20-250-bulk.geo` to the Desktop,
+
+## An R script that works
+
+```
+library(rpenepma)
+geoPath <- "~/Desktop/L3-20-250-bulk.geo"
+
+# define the cumulative layer thickness values
+cum_layer_t_nm <- c(-20.0, -270.0, (-1.0e7 - 270.))
+
+# start sink
+sink(file=geoPath)
+
+# write a header line of x's
+penepma_geo_hdr_x()
+# Wite a blank comment
+penepma_geo_hdr_c()
+# write a descriptive comment
+penepma_geo_hdr_cmt("Cylindrical layers - distances all in cm")
+# Start writing the layers
+penepma_geo_add_surf_z(1, "Plane Z=0 - surface plane", c(0, 0, 0, 1, 0), NA)
+penepma_geo_add_surf_z(2, "Plane Z=-20 nm (1st film, 20 nm thick)",
+                       c(0, 0, 0, 1, 0), cum_layer_t_nm[1])
+penepma_geo_add_surf_z(3, "Plane Z=-270 nm (2nd film, 250 nm thick)",
+                       c(0, 0, 0, 1, 0), cum_layer_t_nm[2])
+penepma_geo_add_surf_z(4, "Plane Z=-1 cm (3rd matl, substrate)",
+                       c(0, 0, 0, 1, 0),  cum_layer_t_nm[3])
+# Add a cylindrical bounding layer 1 cm in radius
+penepma_geo_add_surf_cyl(5, "Cylinder, 1 cm radius", 1.0)
+# Write out the layer descriptions
+penepma_geo_add_body(1, "top layer")
+penepma_geo_add_body(2, "middle layer")
+penepma_geo_add_body(3, "bottom layer")
+# finish up
+penepma_geo_fini()
+# close the sink file
+sink()
+```
+
