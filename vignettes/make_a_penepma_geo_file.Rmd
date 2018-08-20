@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-Our objective construct a PENEPMA `.geo` file.
+Our objective is to construct a PENEPMA `.geo` file.
 
 **Note**: Rmarkdown interferes with the use of the `sink()` function which
 permits us to divert output to a system file. The code below, when run from
