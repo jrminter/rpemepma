@@ -16,7 +16,8 @@
 #'
 #' @export
 #'
-copy_list_of_files <- function(in_dir, out_dir, fi_spec, verbose = FALSE){
+penepma_copy_list_of_files <- function(in_dir, out_dir, fi_spec,
+                                       verbose = FALSE){
     list_of_files <- list.files(sim_dir, fi_spec)
     if(verbose == TRUE){print(list_of_files)}
     lapply(list_of_files, function(x){
