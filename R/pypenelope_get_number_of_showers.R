@@ -10,9 +10,7 @@
 #' @export
 #' 
 pypenelope_get_number_of_showers <- function(fi){
-    options(scipen = -6) # force printing in exponential format
     line <- readLines(fi)[[1]][1]
     showers <- as.numeric(strsplit(line, " ")[[1]][4])
-    options(scipen = 3) # reset to default
     return(showers)
-  }
+}
