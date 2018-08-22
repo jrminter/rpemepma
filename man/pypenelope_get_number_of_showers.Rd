@@ -4,15 +4,17 @@
 \alias{pypenelope_get_number_of_showers}
 \title{Retrieve the number of showers from a pypenelope simulation}
 \usage{
-pypenelope_get_number_of_showers(fi)
+pypenelope_get_number_of_showers(dir)
 }
 \arguments{
-\item{fi}{String. The path to the penepma.log file. ex: "./penepma.log"}
+\item{dir}{String. The directory with penepma.log file. ex: "here()"}
 }
 \value{
-the number of "showers" i.e. trajectories computed.  (numeric)
+the number of "showers" i.e. trajectories computed. (numeric)
 }
 \description{
-Pypenelope seems to write the nnumber of showers as the first entry in the
-penepma.log file.
+If pypenelope ends on a time or uncertainty measure, the number of
+trajectories seems to be written in the penepma.log file. If the
+simulation is time limited, the data must be retrieved from the
+penepma.dat file.
 }
