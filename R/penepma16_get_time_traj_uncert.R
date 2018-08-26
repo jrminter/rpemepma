@@ -22,7 +22,7 @@ penepma16_get_time_traj_uncert <- function(sim_dir){
     df <- data.frame(sim_time = line_time,
                      num_traj = traj,
                      rel_unc  = rel_unc)
-    names(df) <- c("sim_time", "num_traj", "rel_unc")
+    names(df) <- c("sim_time_sec", "num_traj", "rel_unc")
     res <- tibble::as_tibble(df)
     return(res)
 }
