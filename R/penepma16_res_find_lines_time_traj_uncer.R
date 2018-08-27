@@ -1,6 +1,8 @@
 #' Find the lines containing simulation time, number of trajectories,
 #' and relative uncertainty from a penepma16 simulation. The lines in
-#' the file are shifted. Use this to find offsets for 
+#' the file are shifted, typically because of changes in the number of
+#' detectors. Use this to find offsets for the function
+#' penepma16_get_time_traj_uncert
 #'
 #' @param sim_dir The path to the directory with penepma.res file.
 #' 

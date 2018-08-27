@@ -4,7 +4,9 @@
 \alias{penepma16_res_find_lines_time_traj_uncer}
 \title{Find the lines containing simulation time, number of trajectories,
 and relative uncertainty from a penepma16 simulation. The lines in
-the file are shifted. Use this to find offsets for}
+the file are shifted, typically because of changes in the number of
+detectors. Use this to find offsets for the function
+penepma16_get_time_traj_uncert}
 \usage{
 penepma16_res_find_lines_time_traj_uncer(sim_dir, skip_time = 6,
   skip_traj = 2, skip_unc = 33)
@@ -27,5 +29,7 @@ None. Prints lines chosen.
 \description{
 Find the lines containing simulation time, number of trajectories,
 and relative uncertainty from a penepma16 simulation. The lines in
-the file are shifted. Use this to find offsets for
+the file are shifted, typically because of changes in the number of
+detectors. Use this to find offsets for the function
+penepma16_get_time_traj_uncert
 }
