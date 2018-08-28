@@ -77,9 +77,9 @@ poll_penepma16_res <- function(sim_dir,
                 print(paste("i = ", i))
                 print(tail(out, 10))
                 
-            } else{
+            }else{
                 if(verbose==TRUE){print("break")}
-                return(out)
+                break;
             }
             
         }
