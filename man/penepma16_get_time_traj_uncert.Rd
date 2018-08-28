@@ -6,7 +6,7 @@
 penepma16 simulation. Sometimes the lines in the file are shifted.}
 \usage{
 penepma16_get_time_traj_uncert(sim_dir, skip_time = 6, skip_traj = 2,
-  skip_unc = 33)
+  skip_unc = 33, min_lines = 10, clean = FALSE)
 }
 \arguments{
 \item{sim_dir}{The path to the directory with penepma.res file.}
