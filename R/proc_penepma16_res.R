@@ -26,12 +26,12 @@
 #' 
 #' @export
 #' 
-penepma16_get_time_traj_uncert <- function(sim_dir,
-                                          skip_time = 6,
-                                          skip_traj = 2,
-                                          skip_unc = 33,
-                                          min_lines = 10,
-                                          clean = FALSE){
+proc_penepma16_res <- function(sim_dir,
+                               skip_time = 6,
+                               skip_traj = 2,
+                               skip_unc = 33,
+                               min_lines = 10,
+                               clean = FALSE){
     bas_fi <- sprintf("%s/penepma-res.dat", sim_dir)
     wrk_fi <- sprintf("%s/work.dat", sim_dir)
     # first, make a working copy

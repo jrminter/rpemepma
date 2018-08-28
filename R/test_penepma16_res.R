@@ -2,7 +2,7 @@
 #' and relative uncertainty from a penepma16 simulation. The lines in
 #' the file are shifted, typically because of changes in the number of
 #' detectors. Use this to find offsets for the function
-#' penepma16_get_time_traj_uncert
+#' proc_penepma16_res
 #'
 #' @param sim_dir The path to the directory with penepma.res file.
 #' 
@@ -20,10 +20,10 @@
 #' @export
 #' 
 
-penepma16_res_find_lines_time_traj_uncer <- function(sim_dir,
-                                                     skip_time = 6,
-                                                     skip_traj = 2,
-                                                     skip_unc = 33){
+test_penepma16_res <- function(sim_dir,
+                               skip_time = 6,
+                               skip_traj = 2,
+                               skip_unc = 33){
     path <- sprintf("%s/penepma-res.dat", sim_dir)
     print(path)
     con <- file(path)

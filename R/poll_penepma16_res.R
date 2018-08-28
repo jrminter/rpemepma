@@ -35,7 +35,7 @@
 #' @export
 #' 
 
-poll_penepma_res <- function(sim_dir,
+poll_penepma16_res <- function(sim_dir,
                              sleep_sec = 120,
                              max_iter = 20000,
                              skip_time = 6,
