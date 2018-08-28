@@ -11,14 +11,21 @@ penepma16_get_time_traj_uncert(sim_dir, skip_time = 6, skip_traj = 2,
 \arguments{
 \item{sim_dir}{The path to the directory with penepma.res file.}
 
-\item{skip_time}{An integer. The number of lines to skip to read the line
-containing the simulation time. Default:6.}
+\item{skip_time}{An integer. The number of lines to skip to read the
+line containing the simulation time. Default:6.}
 
-\item{skip_traj}{An integer. The number of lines to skip to read the line
-containing the number of trajectories, Default: 2 (additional lines).}
+\item{skip_traj}{An integer. The number of lines to skip to read the
+line containing the number of trajectories, Default: 2
+(additional lines).}
 
-\item{skip_unc}{An integer. The number of lines to skip to read the line
-with the uncertainty value. Default: 33 (additional lines).}
+\item{skip_unc}{An integer. The number of lines to skip to read the
+line with the uncertainty value. Default: 33 (additional lines).}
+
+\item{min_lines}{An integer. Line limit to be considered a bad read.
+fail gracefully, returning NAs that we can remove later.}
+
+\item{clean}{A boolean. If TRUE, delete the work.dat file.
+Default: FALSE}
 }
 \value{
 a tibble with the simulation time (sec), number of

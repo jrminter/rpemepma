@@ -14,7 +14,10 @@
 #' line with the uncertainty value. Default: 33 (additional lines).
 #' 
 #' @param min_lines An integer. Line limit to be considered a bad read.
-#' fail gracefully 
+#' fail gracefully, returning NAs that we can remove later.
+#' 
+#' @param clean A boolean. If TRUE, delete the work.dat file.
+#' Default: FALSE 
 #' 
 #' @return a tibble with the simulation time (sec), number of
 #' trajectories, and the relative uncertainty of the REFLIN transition
