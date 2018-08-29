@@ -58,8 +58,12 @@ poll_penepma16_res <- function(sim_dir,
             # add the first line to output
             out <- tib
             sim_time_one <- tib$sim_time_sec
+            # fix a bad read...
+            if(is.na(sim_time_one)){sim_time_one <- skip_time}
         } else {
             sim_time_one <- tib$sim_time_sec
+            # fix a bad read...
+            if(is.na(sim_time_one)){sim_time_one <- skip_time+1}
             if(verbose==TRUE){print("sleep...")}
             Sys.sleep(sleep_sec)
             if(verbose==TRUE){print("awake...")}
@@ -70,6 +74,8 @@ poll_penepma16_res <- function(sim_dir,
                                       min_lines = min_lines,
                                       clean = clean)
             sim_time_two <- tib$sim_time_sec
+            # fix a bad read...
+            if(is.na(sim_time_two)){sim_time_two <- sim_time_one+1}
             if(sim_time_two > sim_time_one){
                 if(verbose==TRUE){print("processing data...")}
                 # process the data
