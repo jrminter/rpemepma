@@ -45,6 +45,7 @@ poll_penepma16_res <- function(sim_dir,
                              clean = FALSE,
                              verbose = FALSE){
     fi_path <- sprintf("%s/penepma-res.dat", sim_dir)
+    rda_path <-  sprintf("%s/out.rda", sim_dir)
     if(verbose==TRUE){print("starting")}
     for (i in seq(1:max_iter)){
         # first query of penepma-res.dat file 
@@ -82,6 +83,11 @@ poll_penepma16_res <- function(sim_dir,
                 out <- rbind(out, tib)
                 print(paste("i = ", i))
                 print(tail(out, 10))
+                # save an out.rda file as a backup in case something
+                # breaks in the run. At least we won't lose all the data...
+                file.remove(rda_path)
+                save(out, file = rda_path)
+                
                 
             }else{
                 if(verbose==TRUE){print("break")}
