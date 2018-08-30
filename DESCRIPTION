@@ -1,5 +1,5 @@
 Package: rpenepma
-Title: Easy processing of data from PENEPMA simulations using R
+Title: Processing of data from PENEPMA simulations using R
 Version: 0.0.0.9025
 Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
 Maintainer: John Minter <jrminter@gmail.com>
