@@ -3,6 +3,7 @@ title: "Compute REFLIN tolerance times"
 author: "John Minter"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+
 vignette: >
   %\VignetteIndexEntry{Compute REFLIN tolerance times}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,10 +15,172 @@ knitr::opts_chunk$set(echo=TRUE,
   comment = NA,
   fig.align = "centre",
   fig.height = 4,
+  fig.width = 7.25,
   message = FALSE,
   warning = FALSE,
   error = FALSE)
 ```
 
 # Set up for the analysis
+
+Set the paths and constants that we need
+
+```{r setPaths}
+library(rpenepma)
+library(ggplot2)
+e0 <- 4 # kV
+sim_nam  <- "Al-100-nm-on-Fe"
+out_ti   <- sprintf("%s-%gkV", sim_nam, e0)
+
+rd_path <- system.file("extdata", "Al-100nm-on-Fe-4kV-1000ch",
+                       "al_100nm_on_fe_4kv.rda", package = "rpenepma")
+int_fi  <- system.file("extdata", "Al-100nm-on-Fe-4kV-1000ch",
+                       "pe-intens-01.dat", package = "rpenepma")
+spc_fi  <- system.file("extdata", "Al-100nm-on-Fe-4kV-1000ch",
+                       "pe-spect-01.dat", package = "rpenepma")
+```
+
+
+Load our REFLIN data and print the head.
+
+```{r loadRefHead}
+load(rd_path)
+print(head(al_100nm_on_fe_4kv, 5))
+```
+
+Print the tail
+
+```{r printRefTail}
+print(tail(al_100nm_on_fe_4kv, 5))
+```
+
+## Plot the simulation time (sec) as a function of relative uncertainty
+
+```{r plot_tol_vs_time}
+tol_vs_time_plt <- ggplot(al_100nm_on_fe_4kv,
+                          aes(x = rel_unc, y = sim_time_sec)) +
+                   geom_point() +
+                   xlab("relative uncertainty") +
+                   ylab("simulation time [sec]") +
+                   ggtitle("100 nm Al on Fe at 4 kV") +
+                   theme(axis.text=element_text(size=12),
+                         axis.title=element_text(size=12),
+                         plot.title=element_text(hjust = 0.5))
+                   
+
+print(tol_vs_time_plt)
+```
+
+
+## Plot the simulation time (sec) as a function of the inverse relative uncertainty
+
+```{r plot_inv_rel_unc_vs_time}
+inv_rel_unc_vs_time_plt <- ggplot(al_100nm_on_fe_4kv,
+                                  aes(x = 1/rel_unc,
+                                      y = sim_time_sec)) +
+                                  geom_point() +
+                                  stat_smooth(method = 'lm',
+                                              formula = y ~ I(x^2) + 0,
+                                              aes(' ' = 'darkblue'),
+                                              se = FALSE) +
+                                  xlab("inverse relative uncertainty") +
+                                  ylab("simulation time [sec]") +
+                                  ggtitle("100 nm Al on Fe at 4 kV") +
+                                  theme(axis.text=element_text(size=12),
+                                        axis.title=element_text(size=12),
+                                        plot.title=element_text(hjust = 0.5))
+
+print(inv_rel_unc_vs_time_plt)
+```
+
+## Fit a second order polynomial to the system
+
+Model the system as a second order polynomial with a zero intercept.
+
+```{r polyModel}
+x <- 1.0 / al_100nm_on_fe_4kv$rel_unc
+y <- al_100nm_on_fe_4kv$sim_time_sec
+
+poly_mod <- lm(y ~ I(x^2) + 0)
+pander(summary(poly_mod))
+
+```
+
+So for a `0.2` relative uncertainty, we predict a simulation time
+of
+
+```{r}
+coef <- summary(poly_mod)$coefficients
+x <- 1.0/0.2
+y <- coef[1] * x*x / (60*60)
+ans <- sprintf("%.1f hrs", y)
+cat("predicted value for tolerance = 0.2:", ans)
+```
+
+and for a `0.02` relative uncertainty, we predict a simulation time
+of
+
+
+```{r}
+x <- 1.0/0.02
+y <- coef[1] * x*x / (60*60)
+ans <- sprintf("%.1f hrs", y)
+cat("predicted value for tolerance = 0.02:", ans)
+```
+
+```{r}
+hrs <- max(al_100nm_on_fe_4kv$sim_time_sec)/(60*60)
+cat("measured value for tolerance = 0.02:", hrs, "hrs")
+```
+
+# Process the spectra data
+
+## Load the raw data
+
+```{r loadSpectraData}
+spc_tib <- penepma_read_raw_data(spc_fi)
+rownames(spc_tib) <- c()
+```
+
+## Plot the spectrum on a log scale
+
+
+```{r plotLogIntensSpectrum, fig.width = 8, warning = FALSE}
+subset <- spc_tib %>%
+          filter(keV < 2.0)
+plt <- ggplot(subset, aes(x = keV, y = pd.mu)) +
+       geom_line() + 
+       scale_x_continuous(breaks = seq(from = 0, to = e0, by = 1)) +
+       scale_y_log10() +
+       xlab(label = "X-ray energy [keV]") +
+       ylab(label = "log(probability density)") +
+       # (1/(eV*sr*electron)") +
+       ggtitle(out_ti) +
+       theme(axis.text = element_text(size = 12),
+             axis.title = element_text(size = 12),
+             # center the title
+             plot.title = element_text(hjust = 0.5))
+       
+print(plt)
+```
+
+## Plot the spectrum on a linear scale
+
+
+```{r plotLinIntensSpectrum, fig.width = 8, warning = FALSE}
+plt <- ggplot(subset, aes(x = keV, y = pd.mu)) +
+       geom_line() + 
+       scale_x_continuous(breaks = seq(from = 0, to = 2, by = 0.25)) +
+       scale_y_continuous() +
+       xlab(label = "X-ray energy [keV]") +
+       ylab(label = "Probability density") +
+       # (1/(eV*sr*electron)") +
+       ggtitle(out_ti) +
+       theme(axis.text = element_text(size = 12),
+             axis.title = element_text(size = 12),
+             # center the title
+             plot.title = element_text(hjust = 0.5))
+       
+print(plt)
+```
 

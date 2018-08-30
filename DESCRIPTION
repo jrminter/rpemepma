@@ -18,6 +18,7 @@ Depends:
     tibble
 Suggests:
     knitr,
-    rmarkdown
+    rmarkdown,
+    here
 VignetteBuilder: knitr
 RoxygenNote: 6.1.0

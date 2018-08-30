@@ -1,0 +1,3 @@
+load("/Users/jrminter/Documents/git/rpenepma/inst/extdata/Al-100nm-on-Fe-4kV-1000ch/al_100nm_on_fe_4kv.rda")
+ls()
+print(al_100nm_on_fe_4kv)
