@@ -1,7 +1,7 @@
 #' penepma16_read_map_hdr - read the pe-map-0#-depth.dat file
 #' and return a list with Z and the transition
 #' 
-#' A helper function for processing septh data
+#' A helper function for processing depth data
 #' 
 #' @param fi A string. the path to the desired file, ex: './pe-map-01-depth.dat'
 #' 
