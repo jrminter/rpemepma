@@ -13,6 +13,10 @@
 #' @param e0 number - the voltage in kV for the simulation
 #'
 #' @param title string - label for the spectrum (default "Penepma")
+#' 
+#' @param scale_fact number - number of counts to set for minimum value.
+#' Adjust if needed to be sure the Duane--Hunt limit is displayed.
+#' Default = 1.0.
 #'
 #' @param owner string - label for the scientist
 #'
@@ -38,6 +42,7 @@ penepma_to_msa <- function(datFile,
                               msaFile,
                               e0,
                               title,
+                              scale_fact = 1.0,
                               owner="Penepma",
                               bDebug=FALSE){
   
@@ -86,7 +91,7 @@ penepma_to_msa <- function(datFile,
   
   # scale for DTSA
   low <- min(df$pd.mu)
-  factor <- 1.0/low
+  factor <- scale_fact/low
   
   lData <- nrow(df)
   i <- 1
