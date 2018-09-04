@@ -14,5 +14,5 @@ penepma16_read_map_hdr(fi)
 A list. Element 1 is the Z value and element 2 is the trasnition
 }
 \description{
-A helper function for processing septh data
+A helper function for processing depth data
 }

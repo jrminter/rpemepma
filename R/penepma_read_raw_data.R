@@ -1,4 +1,7 @@
-#' Retrieve the raw channel data from a PENEPMA spectrum
+#' Retrieve the raw channel data from a PENEPMA spectrum.
+#' 
+#' Note: we omit rows where the spectrum intensity is at the penepma lower limit
+#' of 1.0e-35 and convert eV to keV.
 #'
 #' @param fi String. The path to the file. ex: "./pe-spect-01.dat"
 #' 

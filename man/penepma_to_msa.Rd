@@ -4,8 +4,8 @@
 \alias{penepma_to_msa}
 \title{Convert a PENEPMA spectrum file to MSA format}
 \usage{
-penepma_to_msa(datFile, msaFile, e0, title, owner = "Penepma",
-  bDebug = FALSE)
+penepma_to_msa(datFile, msaFile, e0, title, scale_fact = 1,
+  owner = "Penepma", bDebug = FALSE)
 }
 \arguments{
 \item{datFile}{string - the path to the 'pe-spect-##.dat'
@@ -16,6 +16,10 @@ file}
 \item{e0}{number - the voltage in kV for the simulation}
 
 \item{title}{string - label for the spectrum (default "Penepma")}
+
+\item{scale_fact}{number - number of counts to set for minimum value.
+Adjust if needed to be sure the Duane--Hunt limit is displayed.
+Default = 1.0.}
 
 \item{owner}{string - label for the scientist}
 

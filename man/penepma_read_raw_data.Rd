@@ -2,7 +2,7 @@
 % Please edit documentation in R/penepma_read_raw_data.R
 \name{penepma_read_raw_data}
 \alias{penepma_read_raw_data}
-\title{Retrieve the raw channel data from a PENEPMA spectrum}
+\title{Retrieve the raw channel data from a PENEPMA spectrum.}
 \usage{
 penepma_read_raw_data(fi)
 }
@@ -13,5 +13,6 @@ penepma_read_raw_data(fi)
 a tibble
 }
 \description{
-Retrieve the raw channel data from a PENEPMA spectrum
+Note: we omit rows where the spectrum intensity is at the penepma lower limit
+of 1.0e-35 and convert eV to keV.
 }
