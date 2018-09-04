@@ -57,11 +57,11 @@ proc_penepma16_res <- function(sim_dir,
     con <- file(wrk_fi)
     open(con)
     # 7th line
-    line_time <- read.table(con, skip = skip_time, nrow=1)[4] 
+    line_time <- read.table(con, skip = skip_time, nrows=1)[4] 
     # 10th line
-    traj      <- as.double(read.table(con, skip = skip_traj, nrow=1)[5]) 
+    traj      <- as.double(read.table(con, skip = skip_traj, nrows=1)[5]) 
     # 44th line
-    rel_unc   <- read.table(con, skip = skip_unc, nrow=1)[4] 
+    rel_unc   <- read.table(con, skip = skip_unc, nrows=1)[4] 
     close(con)
     df <- data.frame(sim_time = line_time,
                      num_traj = traj,

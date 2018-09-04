@@ -1,8 +1,8 @@
 #' Convert cm to nm for processing PENEPMA data
 #'
-#' @param nm A number. The value to convert.
+#' @param cm A number. The value to convert.
 #'
-#' @return cm The result in cm 
+#' @return nm The result in cm 
 #'                   
 #' @export
 #'

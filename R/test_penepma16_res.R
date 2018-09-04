@@ -29,13 +29,13 @@ test_penepma16_res <- function(sim_dir,
     con <- file(path)
     open(con)
     # 7th line
-    line_time <- read.table(con, skip = skip_time, nrow=1)
+    line_time <- read.table(con, skip = skip_time, nrows=1)
     print(line_time)
     # 10th line
-    traj      <- read.table(con, skip = skip_traj, nrow=1)
+    traj      <- read.table(con, skip = skip_traj, nrows=1)
     print(traj)
     # 44th line
-    rel_unc   <- read.table(con, skip = skip_unc, nrow=1)
+    rel_unc   <- read.table(con, skip = skip_unc, nrows=1)
     print(rel_unc)
     close(con)
 }

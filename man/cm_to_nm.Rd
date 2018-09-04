@@ -7,10 +7,10 @@
 cm_to_nm(cm)
 }
 \arguments{
-\item{nm}{A number. The value to convert.}
+\item{cm}{A number. The value to convert.}
 }
 \value{
-cm The result in cm
+nm The result in cm
 }
 \description{
 Convert cm to nm for processing PENEPMA data

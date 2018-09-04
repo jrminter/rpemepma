@@ -7,7 +7,7 @@
 nm_to_cm(nm)
 }
 \arguments{
-\item{cm}{A number. The value to convert.}
+\item{nm}{A number. The value to convert.}
 }
 \value{
 cm The result in cm
