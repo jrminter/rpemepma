@@ -14,7 +14,7 @@ penepma_get_intensity_z_s0_s1(tib, z, s0, s1)
 
 \item{s0}{The number for the originating shell from Table 7.2. Ex: 1 for K.}
 
-\item{s1}{The number for the filling shel lfrom Table 7.2. Ex: 4 for L3.}
+\item{s1}{The number for the filling shell from Table 7.2. Ex: 4 for L3.}
 }
 \value{
 A tibble. The Symbol, atomic number, S0, S1, mean intensity,

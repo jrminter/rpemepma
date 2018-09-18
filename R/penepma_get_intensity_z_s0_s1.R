@@ -7,7 +7,7 @@
 #' 
 #' @param s0 The number for the originating shell from Table 7.2. Ex: 1 for K.
 #' 
-#' @param s1 The number for the filling shel lfrom Table 7.2. Ex: 4 for L3.
+#' @param s1 The number for the filling shell from Table 7.2. Ex: 4 for L3.
 #'
 #' @return A tibble. The Symbol, atomic number, S0, S1, mean intensity,
 #'         mean intensity std error,and mean intensity SNR.
